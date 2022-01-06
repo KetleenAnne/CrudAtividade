@@ -21,7 +21,7 @@ public class Student {
     
     @Id
     @GeneratedValue(strategy =GenerationType.IDENTITY)
-    private int id;
+    private Long id;
 
     @Column
     private String name;
@@ -36,9 +36,6 @@ public class Student {
     @ManyToMany(mappedBy = "enrolledStudents")
     private  Set<Subject> subjects = new HashSet<Subject>();
 
-    // @Column
-    // private String registration;
-
     public Student(){
         
     }
@@ -48,12 +45,12 @@ public class Student {
     public void setSubjects(Set<Subject> subjects) {
         this.subjects = subjects;
     }
-    public int getId(){
+    public Long getId(){
         return id;
     }
-   // public void setId(int id){
-   //     this.id = id;
-   // }
+    public void setId(Long id){
+        this.id = id;
+    }
     public String getName(){
         return name;
     }

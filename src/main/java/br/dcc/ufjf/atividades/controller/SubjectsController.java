@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 import br.dcc.ufjf.atividades.model.Student;
 import br.dcc.ufjf.atividades.model.Subject;
-import br.dcc.ufjf.atividades.repository.RepositoryStudents;
+import br.dcc.ufjf.atividades.repository.RepositoryStudent;
 import br.dcc.ufjf.atividades.repository.RepositorySubjects;
 
 @RestController
@@ -16,29 +16,29 @@ import br.dcc.ufjf.atividades.repository.RepositorySubjects;
 public class SubjectsController{
 
     @Autowired
-    RepositorySubjects repositorySubjects;
+    RepositorySubjects repositorySubject;
 
     @Autowired
-    RepositoryStudents repositoryStudents;
+    RepositoryStudent repositoryStudent;
     
     @PostMapping
     public Subject saveSubjects(@RequestBody Subject subjects){
-      return repositorySubjects.save(subjects);
+      return repositorySubject.save(subjects);
     }
 
     @GetMapping
     public List<Subject> getStudents(){
-        return repositorySubjects.findAll();
+        return repositorySubject.findAll();
     }
     @PutMapping("/{subjectId}/student/{studentId}")
     Subject enrolledStudentsToSubject(
-        @PathVariable int subjectId,
-        @PathVariable int studentId
+        @PathVariable Long subjectId,
+        @PathVariable Long studentId
     ){
-        Subject subject = repositorySubjects.findById(subjectId).get();
-        Student student = repositoryStudents.findById(studentId).get();
+        Subject subject = repositorySubject.findById(subjectId).get();
+        Student student = repositoryStudent.findById(studentId).get();
         subject.enrollStudent(student);
-        return repositorySubjects.save(subject);
+        return repositorySubject.save(subject);
         
     }
 } 
