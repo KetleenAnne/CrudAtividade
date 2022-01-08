@@ -39,6 +39,11 @@ public class Student {
     public Student(){
         
     }
+    public Student(String name, String cpf, String birth){
+        this.name=name;
+        this.cpf=cpf;
+        this.birth=birth;
+    }
     public Set<Subject> getSubjects() {
         return subjects;
     }

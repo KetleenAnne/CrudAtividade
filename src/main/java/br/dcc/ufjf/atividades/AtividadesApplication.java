@@ -1,5 +1,6 @@
 package br.dcc.ufjf.atividades;
-
+import br.dcc.ufjf.atividades.model.*;
+import br.dcc.ufjf.atividades.controller_service.*;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
