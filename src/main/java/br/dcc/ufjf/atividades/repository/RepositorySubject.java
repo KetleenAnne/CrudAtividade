@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import br.dcc.ufjf.atividades.model.Subject;
 
 @Repository
-public interface RepositorySubjects extends JpaRepository<Subject,Long>{
+public interface RepositorySubject extends JpaRepository<Subject,Long>{
 
 }

@@ -8,15 +8,15 @@ import org.springframework.web.bind.annotation.*;
 import br.dcc.ufjf.atividades.model.Student;
 import br.dcc.ufjf.atividades.model.Subject;
 import br.dcc.ufjf.atividades.repository.RepositoryStudent;
-import br.dcc.ufjf.atividades.repository.RepositorySubjects;
+import br.dcc.ufjf.atividades.repository.RepositorySubject;
 
 @RestController
 @RequestMapping("/subjects")
 
-public class SubjectsController{
+public class SubjectController{
 
     @Autowired
-    RepositorySubjects repositorySubject;
+    RepositorySubject repositorySubject;
 
     @Autowired
     RepositoryStudent repositoryStudent;

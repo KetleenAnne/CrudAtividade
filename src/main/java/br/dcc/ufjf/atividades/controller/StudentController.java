@@ -23,11 +23,17 @@ public class StudentController{
     private  StudentService studentService;
 
     @RequestMapping("/")
-    public String viewHomePage(Model model){
+    public String viewHomePage(){
+        return "home";
+    }
+    
+
+    @RequestMapping("/student")
+    public String viewStudentPage(Model model){
 
         List<Student> listStudents = studentService.getStudents();
         model.addAttribute("listStudents", listStudents); 
-        return "index";
+        return "student";
 
     }
 
