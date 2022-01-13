@@ -9,25 +9,28 @@
     <body>
         <div align="center">
 
-            <h1>Student Manager</h1>
-            <a href="newsubject"> Add New Student</a>
+            <h1>Subject Manager</h1>
+            <a href="newSubj"> Add New Subject</a>
             <br/><br/>
 
             <table border="1" cellpadding="10" >
                 <thead>
                     <tr>
                         <th>Subject ID</th>
+                        <th>Discipline Code</th>
                         <th>Name</th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr th:each="subject : ${listSubjects}">
                         <td th:text = "${subject.id}">Subject ID</td>
+                        <td th:text= "${subject.disciplineCode}">Discipline Code</td> 
                         <td th:text = "${subject.name}">Name</td>
                         <td>
-                            <a th:href="@{'/editSubject/'+ ${subject.id}}">Edit</a>
+                            <a th:href="@{'/edits/'+ ${subject.id}}">Edit</a>
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            <a th:href="@{'/deleteSubject/' + ${subject.id}}">Delete</a>
+                            <a th:href="@{'/deleteSubj/' + ${subject.id}}">Delete</a>
                         </td>
                     </tr>
                 </tbody>

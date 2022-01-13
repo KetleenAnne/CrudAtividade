@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8" >
+        <title> Edit Subject</title>
+    </head>
+
+    <body>
+        <div align="center">
+            <h1>Edit Subject</h1>
+            <br/>
+            <form action="#" th:action="@{/savesubject}" th:object="${subject}" method="post">
+                <table border="0" cellpadding="10">
+                    <tr>
+                        <td>Subject ID: </td>
+                        <td><input type="text" th:field="*{subject.id}" readonly="readonly"/></td>
+                    </tr>
+                    <tr>
+                        <td>Discipline Code: </td>
+                        <td><input type="text" th:field="*{subject.disciplineCode}"/></td>
+                    </tr>
+                    <tr>
+                        <td>Name: </td>
+                        <td><input type="text" th:field="*{subject.name}"/></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><button type="submit"> Save</td>
+                    </tr>
+                    
+                </table>
+            </form>
+        </div>
+    </body>
+
+</html>

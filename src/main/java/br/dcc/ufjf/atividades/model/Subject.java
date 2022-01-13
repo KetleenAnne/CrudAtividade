@@ -9,12 +9,14 @@ import javax.persistence.*;
 
 
 @Entity
-@Table(name="Subjects")
 public class Subject {
 
     @Id
     @GeneratedValue(strategy =GenerationType.IDENTITY)
-    private int id; /*id da disciplina*/
+    private Long id; /*id da disciplina*/
+
+    @Column 
+    private String disciplineCode; /*codigo da disciplina*/
     
     @Column 
     private String name; /*nome da disciplina */
@@ -51,19 +53,27 @@ public class Subject {
         this.enrolledStudents = enrolledStudents;
     }
 
-    public int getId(){
+    public Long getId(){
         return id;
     }
-     public void setId(int id){
+     public void setId(Long id){
         this.id =id;
     }
+   
+    public String getDisciplineCode(){
+        return disciplineCode;
+    }
+    public void setDisciplineCode(String disciplineCode){
+        this.disciplineCode = disciplineCode;
+    }
+
     public String getName(){
         return name;
     }
     public  void setName(String name){
         this.name = name;
     }
-   
+
      public String getRegistration(){
          return registration;
      }
@@ -71,8 +81,8 @@ public class Subject {
          this.registration=registration;
      }
 
-    public void enrollStudent(Student student) {
-        enrolledStudents.add(student);
-    } 
+    // public void enrollStudent(Student student) {
+    //     enrolledStudents.add(student);
+    // } 
     
 }

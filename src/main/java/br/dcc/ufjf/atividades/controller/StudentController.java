@@ -47,7 +47,7 @@ public class StudentController{
     @RequestMapping(value = "/save", method=RequestMethod.POST)
     public String saveStudent(@ModelAttribute("student") Student student){
         studentService.saveStudent(student);
-        return "redirect:/";
+        return "redirect:/student";
     }
     @RequestMapping("/edit/{id}")
     public ModelAndView showEditStudentForm(@PathVariable(name="id") Long id){
@@ -57,9 +57,9 @@ public class StudentController{
         modelAndView.addObject("student", student);
         return modelAndView;
     }
-     @RequestMapping("/delete/{id}")
+    @RequestMapping("/delete/{id}")
     public String showDeleteStudentForm(@PathVariable(name="id") Long id){
         studentService.delete(id); 
-        return "redirect:/";
+        return "redirect:/student";
     }
 }

@@ -24,7 +24,7 @@ public class SubjectService {
 
     // salva um novo Subject
     //@PostMapping
-    public Subject saveStudent(@RequestBody Subject subject){
+    public Subject saveSubject(@RequestBody Subject subject){
        return repositorySubject.save(subject);
 
     }
