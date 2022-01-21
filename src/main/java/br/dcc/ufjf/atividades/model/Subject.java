@@ -21,8 +21,8 @@ public class Subject {
     @Column 
     private String name; /*nome da disciplina */
 
-    @Column
-    private String registration; /*matricula do aluno*/
+    // @Column
+    // private String registration; /*matricula do aluno*/
 
     @ManyToMany
     @JoinTable(
@@ -32,6 +32,11 @@ public class Subject {
     )
     private Set<Student> enrolledStudents = new HashSet<Student>();
     
+    public Subject( String disciplineCode, String name) {
+        this.disciplineCode = disciplineCode;
+        this.name = name;
+    }
+
     public Subject(){
 
     }
@@ -41,8 +46,8 @@ public class Subject {
     // }
 
     // public void setListStudents(List<Students> listStudents) {
-    //     this.listStudents = listStudents;
-    // }
+    //      this.listStudents = listStudents;
+    //  }
 
 
     public Set<Student> getListStudents() {
@@ -74,15 +79,15 @@ public class Subject {
         this.name = name;
     }
 
-     public String getRegistration(){
-         return registration;
-     }
-     public void setRegistration(String registration){
-         this.registration=registration;
-     }
+    //  public String getRegistration(){
+    //      return registration;
+    //  }
+    //  public void setRegistration(String registration){
+    //      this.registration=registration;
+    //  }
 
-    // public void enrollStudent(Student student) {
-    //     enrolledStudents.add(student);
-    // } 
+     public void enrollStudent(Student student) {
+         enrolledStudents.add(student);
+     } 
     
 }

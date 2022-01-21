@@ -31,6 +31,9 @@ public class StudentService {
        return repositoryStudent.save(students);
 
     }
+    public void saveStudentTeste(@RequestBody Student student){
+        repositoryStudent.save(student);
+    }
 
     // procura um student a partir do seu id
     public Student get(Long id){

@@ -3,17 +3,19 @@
     <head>
         <meta charset="utf-8">
         <title>Subject Manager</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
        
     </head>
 
     <body>
+        <div th:replace="home ::navbar"></div>
         <div align="center">
 
-            <h1>Subject Manager</h1>
+            <h3>Subject Manager</h3>
             <a href="newSubj"> Add New Subject</a>
             <br/><br/>
 
-            <table border="1" cellpadding="10" >
+            <table class="table table-bordered" >
                 <thead>
                     <tr>
                         <th>Subject ID</th>

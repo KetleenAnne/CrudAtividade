@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import br.dcc.ufjf.atividades.model.Subject;
@@ -27,6 +28,10 @@ public class SubjectService {
     public Subject saveSubject(@RequestBody Subject subject){
        return repositorySubject.save(subject);
 
+    }
+    @PostMapping
+    public void saveSubjectTeste( Subject subject){
+        repositorySubject.save(subject);
     }
 
     // procura um Subject a partir do seu id
