@@ -17,18 +17,18 @@
                     <tr>
                         <td>Subject:</td>
                         <td>
-                            <select th:field="*{subject}">
+                            <select th:object="${subject}">
                                 <option value="">Select Subject</option>
-                                <option th:each="subject : ${listSubjects}" th:value="${subject.id}" th:text="${subject}"></option>
+                                <option th:each="subject : ${listSubjects}" th:value="${subject.id}" th:text="${subject.name}"></option>
                             </select>
                         </td>
                     </tr>
     
                     <tr>
-                        <td>User:</td>
+                        <td>Student:</td>
                         <td>
-                            <select th:field="*{student}">
-                                <option value="">Select User</option>
+                            <select th:object="${student}">
+                                <option value="">Select Student</option>
                                 <option th:each="student : ${listStudents}" th:value="${student.id}" th:text="${student.name}"></option>
                             </select>
                         </td>
