@@ -27,7 +27,7 @@
                     <tr>
                         <td>Student:</td>
                         <td>
-                            <select th:object="${student}">
+                            <select th:field="${student}">
                                 <option value="">Select Student</option>
                                 <option th:each="student : ${listStudents}" th:value="${student.id}" th:text="${student.name}"></option>
                             </select>
@@ -38,6 +38,36 @@
                     </tr>
                 </table>
             </form>
+        </div>
+        <br/><br/>
+
+        <div align="center">
+
+            <h3>Registrations Management</h3>
+            <br/><br/>
+
+            <table class="table table-bordered" >
+                <thead >
+                    <tr>
+                        <th>Registration ID</th>
+                        <th>Subject Name</th>
+                        <th>Subject CODE</th>
+                        <th>Student Name</th>
+                        <th>Student CPF</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td th:each="registration: ${listRegistrations}" th:text ="${registration.id"}>Registration ID</td>
+                        <td th:each="subject : ${listSubjects}" th:text = "${subject.name}">Subject Name</td>
+                        <td th:each="subject : ${listSubjects}" th:text = "${subject.id}">Subject CODE</td>
+                        <td th:each="student : ${listStudents}" th:text = "${student.name}">Student Name</td>
+                        <td th:each="student : ${listStudents}" th:text = "${student.cpf}">Student CPF</td>
+                       
+                    </tr>
+                </tbody>
+            </table>
+
         </div>
 
     </body>
