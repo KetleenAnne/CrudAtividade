@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import br.dcc.ufjf.atividades.controller_service.SubjectService;
+import br.dcc.ufjf.atividades.model.Student;
 import br.dcc.ufjf.atividades.model.Subject;
 
 @Controller
@@ -71,15 +72,15 @@ public class SubjectController{
     // public List<Subject> getStudents(){
     //     return repositorySubject.findAll();
     // }
-    // @PutMapping("/{subjectId}/student/{studentId}")
-    // Subject enrolledStudentsToSubject(
-    //     @PathVariable Long subjectId,
-    //     @PathVariable Long studentId
-    // ){
-    //     Subject subject = repositorySubject.findById(subjectId).get();
-    //     Student student = repositoryStudent.findById(studentId).get();
-    //     subject.enrollStudent(student);
+    //  @PutMapping("/{subjectId}/student/{studentId}")
+    //  Subject enrolledStudentsToSubject(
+    //      @PathVariable Long subjectId,
+    //      @PathVariable Long studentId
+    //  ){
+    //  Subject subject = repositorySubject.findById(subjectId).get();
+    //      Student student = repositoryStudent.findById(studentId).get();
+    //      subject.enrollStudent(student);
     //     return repositorySubject.save(subject);
         
-    // }
+//  }
 } 

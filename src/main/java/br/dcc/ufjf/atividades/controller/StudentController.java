@@ -81,6 +81,7 @@ public class StudentController{
         ModelAndView  modelAndView= new ModelAndView("viewSubjectsId");
 
         Student student = studentService.get(id);
+        // student.getSubjects().add(new Subject("2146","calculo"));
         modelAndView.addObject("student", student);
         return modelAndView;
     }/*criar o html disso e usar a ideia do /save para o set das listas de materias dos estudantes */
