@@ -27,7 +27,7 @@
                     <tr>
                         <td>Student:</td>
                         <td>
-                            <select th:field="${student}">
+                            <select th:object="${student}">
                                 <option value="">Select Student</option>
                                 <option th:each="student : ${listStudents}" th:value="${student.id}" th:text="${student.name}"></option>
                             </select>
