@@ -14,7 +14,7 @@ public class Registration {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;
+    private Long id;
 
     @OneToOne
     @JoinColumn(name = "student_id", referencedColumnName = "id")
