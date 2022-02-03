@@ -17,7 +17,7 @@
                     <tr>
                         <td>Subject:</td>
                         <td>
-                            <select th:object="${subject}">
+                            <select th:field="*{subject}">
                                 <option value="">Select Subject</option>
                                 <option th:each="subject : ${listSubjects}" th:value="${subject.id}" th:text="${subject.name}"></option>
                             </select>
@@ -27,7 +27,7 @@
                     <tr>
                         <td>Student:</td>
                         <td>
-                            <select th:object="${student}">
+                            <select th:field="*{student}">
                                 <option value="">Select Student</option>
                                 <option th:each="student : ${listStudents}" th:value="${student.id}" th:text="${student.name}"></option>
                             </select>
@@ -57,14 +57,14 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td th:each="registration: ${listRegistrations}" th:text ="${registration.id"}>Registration ID</td>
-                        <td th:each="subject : ${listSubjects}" th:text = "${subject.name}">Subject Name</td>
-                        <td th:each="subject : ${listSubjects}" th:text = "${subject.id}">Subject CODE</td>
-                        <td th:each="student : ${listStudents}" th:text = "${student.name}">Student Name</td>
-                        <td th:each="student : ${listStudents}" th:text = "${student.cpf}">Student CPF</td>
-                       
+                    <tr th:each="registration: ${listRegistrations}" >
+                        <td th:text ="${registration.id"}>Registration ID</td>
+                        <td th:text = "${registration.subject.name}">Subject Name</td>
+                        <td th:text = "${registration.subject.id}">Subject CODE</td>
+                        <td th:text = "${registration.student.name}">Student Name</td>
+                        <td th:text = "${registration.student.cpf}">Student CPF</td>
                     </tr>
+                   
                 </tbody>
             </table>
 

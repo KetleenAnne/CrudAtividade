@@ -31,17 +31,17 @@ public class RegistrationConroller {
     @RequestMapping(value="/saveRegistration", method = RequestMethod.POST)
     public String saveRegistration(@ModelAttribute("registration")Registration registration){
         registrationService.saveRegistration(registration);
-        return "redirect:/";
+        return "redirect:/registration";
     }
 
     @RequestMapping("/registration")
     public String viewRegistrationPage(Model model){
 
-        List<Registration> listRegistration = registrationService.getRegistration();
-        model.addAttribute("listRegistration", listRegistration); 
+        Registration registration = new Registration();
+        model.addAttribute("registration", registration); 
 
-        List<Student> listStudent = studentService.getStudents();
-        model.addAttribute("listStudent", listStudent);
+        List<Student> listStudents = studentService.getStudents();
+        model.addAttribute("listStudents", listStudents);
 
         List<Subject> listSubjects = subjectService.getSubjects();
         model.addAttribute("listSubjects", listSubjects);
