@@ -58,7 +58,7 @@
                 </thead>
                 <tbody>
                     <tr th:each="registration: ${listRegistrations}" >
-                        <td th:text ="${registration.id"}>Registration ID</td>
+                        <td th:text = "${registration.id}">Registration ID</td>
                         <td th:text = "${registration.subject.name}">Subject Name</td>
                         <td th:text = "${registration.subject.id}">Subject CODE</td>
                         <td th:text = "${registration.student.name}">Student Name</td>

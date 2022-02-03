@@ -18,7 +18,7 @@ public class RegistrationService {
  
     // lista todos os Registration
     //@GetMapping
-    public List<Registration> getRegistration(){
+    public List<Registration> getRegistrations(){
         return repositorRegistration.findAll();
     }
 

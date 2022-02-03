@@ -17,7 +17,7 @@ import br.dcc.ufjf.atividades.model.Student;
 import br.dcc.ufjf.atividades.model.Subject;
 
 @Controller
-public class RegistrationConroller {
+public class RegistrationController {
 
     @Autowired
     RegistrationService registrationService;
@@ -39,6 +39,9 @@ public class RegistrationConroller {
 
         Registration registration = new Registration();
         model.addAttribute("registration", registration); 
+
+        List<Registration> listRegistrations = registrationService.getRegistrations();
+        model.addAttribute("listRegistrations", listRegistrations);
 
         List<Student> listStudents = studentService.getStudents();
         model.addAttribute("listStudents", listStudents);
