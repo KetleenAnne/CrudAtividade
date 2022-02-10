@@ -22,7 +22,7 @@ public class ProfessorService {
         }
     
         // salva um novo Professsor
-        public Professor saveRegistration(@RequestBody Professor professor){
+        public Professor saveProfessor(@RequestBody Professor professor){
            return repositoryProfessor.save(professor);
     
         }

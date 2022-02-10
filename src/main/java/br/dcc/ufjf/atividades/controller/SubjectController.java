@@ -40,10 +40,10 @@ public class SubjectController{
     }
 
     @RequestMapping(value = "/savesubject", method=RequestMethod.POST)
-        public String saveSubject(@ModelAttribute("subject") Subject subject){
-            subjectService.saveSubject(subject);
-            return "redirect:/subject";
-        }
+    public String saveSubject(@ModelAttribute("subject") Subject subject){
+        subjectService.saveSubject(subject);
+        return "redirect:/subject";
+    }
     
 
     @RequestMapping("/edits/{id}")
