@@ -8,14 +8,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import br.dcc.ufjf.atividades.model.Subject;
-import br.dcc.ufjf.atividades.repository.RepositorySubject;
+import br.dcc.ufjf.atividades.repository.SubjectRepository;
 
 @Service
 public class SubjectService {
     
     // cria o repository Subject
     @Autowired
-    private RepositorySubject repositorySubject;
+    private SubjectRepository repositorySubject;
  
     // lista todos os Subjects
     //@GetMapping

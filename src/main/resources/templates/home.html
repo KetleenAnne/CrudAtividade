@@ -21,6 +21,9 @@
                         <a class="nav-link" href="/subject">Subjects</a>
                       </li>
                       <li class="nav-item">
+                        <a class="nav-link" href="/professor">Professors</a>
+                      </li>
+                      <li class="nav-item">
                         <a class="nav-link" href="/student">Students</a>
                       </li>
                       <li class="nav-item">
@@ -37,6 +40,33 @@
               </nav>
           </div>
        </div>
+
+        <div align="center">
+          <h1>Activities</h1>
+          <br><br>
+            <div>
+                                
+                <h2>Activities Manager</h2>
+
+                <h3>Add new Activities</h3>
+                
+                <form:form method="post" action="/uploadFile" commandName="document" enctype="multipart/form-data">
+                  <form:errors path="*" cssClass="error"/>
+                    <table>
+                      <td><form:label path="content">Document</form:label></td>
+                      <td><input type="file" name="file" id="file"></input></td>
+                    </tr>
+                    <tr>
+                      <td colspan="2">
+                        <input type="submit" value="Add Document"/>
+                      </td>
+                    </tr>
+                  </table>	
+                </form:form>
+            </div>
+          
+      </div>
+       
        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>

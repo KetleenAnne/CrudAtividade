@@ -10,6 +10,6 @@ import br.dcc.ufjf.atividades.model.Student;
 
 
 @Repository
-public interface RepositoryStudent extends JpaRepository<Student,Long>{
+public interface StudentRepository extends JpaRepository<Student,Long>{
     public List<Student> findByName(String name);
 }

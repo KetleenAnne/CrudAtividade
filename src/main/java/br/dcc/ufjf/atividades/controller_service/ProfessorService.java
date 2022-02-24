@@ -7,17 +7,17 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import br.dcc.ufjf.atividades.model.Professor;
-import br.dcc.ufjf.atividades.repository.RepositoryProfessor;
+import br.dcc.ufjf.atividades.repository.ProfessorRepository;
 
 @Service
 public class ProfessorService {
         // cria o repository Professor
         @Autowired
-        private RepositoryProfessor repositoryProfessor;
+        private ProfessorRepository repositoryProfessor;
      
         // lista todos os Professores
         //@GetMapping
-        public List<Professor> getProfessores(){
+        public List<Professor> getProfessors(){
             return repositoryProfessor.findAll();
         }
     

@@ -4,20 +4,16 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-
 import br.dcc.ufjf.atividades.model.Student;
-import br.dcc.ufjf.atividades.repository.RepositoryStudent;
+import br.dcc.ufjf.atividades.repository.StudentRepository;
 
 @Service
 public class StudentService {
 
     // cria o repository student
     @Autowired
-    private RepositoryStudent repositoryStudent;
+    private StudentRepository repositoryStudent;
  
     // lista todos os students
     //@GetMapping

@@ -7,14 +7,14 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody; 
 
 import br.dcc.ufjf.atividades.model.Registration;
-import br.dcc.ufjf.atividades.repository.RepositoryRegistration;
+import br.dcc.ufjf.atividades.repository.RegistrationRepository;
 
 @Service
 public class RegistrationService {
 
     // cria o repository Registration
     @Autowired
-    private RepositoryRegistration repositorRegistration;
+    private RegistrationRepository repositorRegistration;
  
     // lista todos os Registration
     //@GetMapping

@@ -21,9 +21,6 @@ public class Subject {
     @Column 
     private String name; /*nome da disciplina */
 
-    // @Column
-    // private String registration; /*matricula do aluno*/
-
     @ManyToMany
     @JoinTable(
         name = "student_enrolled",
