@@ -1,4 +1,4 @@
-package br.dcc.ufjf.atividades.controller_service;
+package br.dcc.ufjf.atividades.service;
 
 import java.util.List;
 
@@ -17,7 +17,7 @@ public class StudentService {
  
     // lista todos os students
     //@GetMapping
-    public List<Student> getStudents(){
+    public List<Student> findAllStudents(){
         return repositoryStudent.findAll();
     }
 

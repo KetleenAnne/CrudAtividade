@@ -41,31 +41,58 @@
           </div>
        </div>
 
-        <div align="center">
-          <h1>Activities</h1>
-          <br><br>
-            <div>
-                                
-                <h2>Activities Manager</h2>
+     
 
-                <h3>Add new Activities</h3>
-                
-                <form:form method="post" action="/uploadFile" commandName="document" enctype="multipart/form-data">
-                  <form:errors path="*" cssClass="error"/>
-                    <table>
-                      <td><form:label path="content">Document</form:label></td>
-                      <td><input type="file" name="file" id="file"></input></td>
-                    </tr>
-                    <tr>
-                      <td colspan="2">
-                        <input type="submit" value="Add Document"/>
-                      </td>
-                    </tr>
-                  </table>	
-                </form:form>
-            </div>
-          
-      </div>
+      <div class = "container-fluid text-center">
+
+          <div>
+            <h1> Document Manager </h1>
+          </div>
+
+          <div >
+            <h3 class="text-success">[[${message}]]</h3>
+          </div>
+
+          <div >
+            <th:block th:each="listDocuments : ${listDocs}">
+           
+              <div class="col">
+                <div>
+                  <img th:src="@{/images/doc.png}" width="50">
+                  <img th:src="@{/images/images.png}">
+                </div>
+
+                <div>
+                  <a th:href="@{/download}"> [[${listDocuments.name}]] </a>
+                </div>
+
+                <div>
+                  ([[${#numbers.formatUnteger(listDocuments.size, 4, 'COMMA')}]])
+                </div>
+              </div>
+
+            
+            </th:block>
+          </div>
+
+          <form th:action="@{/upload}" method="post" enctype = "multipart/form-data" style="max-width: 600px; margin: 0 auto " >
+
+              <div class="border rounded m-3">
+                  <h2>Upload your Files: </h2>
+
+                  <p>
+                    <label for="formFile" class="form-label"></label>
+                    <input class="form-control" type="file" id="formFile"  name=" document" required/>
+                  </p>
+                  <p>
+                      <input type="submit" value="Upload" class= "btn btn-primary"/>
+                  </p>
+              </div>
+
+
+          </form>
+
+    </div>
        
        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>

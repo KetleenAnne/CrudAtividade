@@ -1,4 +1,4 @@
-package br.dcc.ufjf.atividades.controller_service;
+package br.dcc.ufjf.atividades.service;
 
 import java.util.List;
 
@@ -18,7 +18,7 @@ public class RegistrationService {
  
     // lista todos os Registration
     //@GetMapping
-    public List<Registration> getRegistrations(){
+    public List<Registration> findAllRegistrations(){
         return repositorRegistration.findAll();
     }
 

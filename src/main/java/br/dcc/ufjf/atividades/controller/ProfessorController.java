@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.bind.annotation.*;
 
-import br.dcc.ufjf.atividades.controller_service.ProfessorService;
 import br.dcc.ufjf.atividades.model.Professor;
+import br.dcc.ufjf.atividades.service.ProfessorService;
 
 @Controller
 public class ProfessorController {
@@ -22,7 +22,7 @@ public class ProfessorController {
     @RequestMapping("/professor")
     public String viewProfessorPage(Model model){
 
-        List<Professor> listProfessors =professorService.getProfessors();
+        List<Professor> listProfessors =professorService.findAllProfessors();
         model.addAttribute("listProfessors", listProfessors); 
         return "professor";
 

@@ -24,9 +24,7 @@ public class Activities {
     @JoinColumn(name = "subject_id", referencedColumnName = "id")
      private Subject subject;
 
-    @OneToOne
-    @JoinColumn(name = "activities", referencedColumnName = "id")
-    private FileActivities fileActivities;
+   
 
 
     public Activities() {
@@ -58,13 +56,5 @@ public class Activities {
     }
 
 
-    public FileActivities getFileActivities() {
-        return fileActivities;
-    }
-
-
-    public void setFileActivities(FileActivities fileActivities) {
-        this.fileActivities = fileActivities;
-    }
     
 }

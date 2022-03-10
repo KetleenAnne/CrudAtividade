@@ -1,4 +1,4 @@
-package br.dcc.ufjf.atividades.controller_service;
+package br.dcc.ufjf.atividades.service;
 
 import java.util.List;
 
@@ -17,7 +17,7 @@ public class ProfessorService {
      
         // lista todos os Professores
         //@GetMapping
-        public List<Professor> getProfessors(){
+        public List<Professor> findAllProfessors(){
             return repositoryProfessor.findAll();
         }
     

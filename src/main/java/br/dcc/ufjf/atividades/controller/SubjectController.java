@@ -8,8 +8,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-import br.dcc.ufjf.atividades.controller_service.SubjectService;
 import br.dcc.ufjf.atividades.model.Subject;
+import br.dcc.ufjf.atividades.service.SubjectService;
 
 @Controller
 // @RequestMapping("/subjects")
@@ -25,7 +25,7 @@ public class SubjectController{
 
     @RequestMapping("/subject")
         public String viewSubjectPage(Model model){
-            List<Subject> listSubjects = subjectService.getSubjects();
+            List<Subject> listSubjects = subjectService.findAllSubjects();
             model.addAttribute("listSubjects", listSubjects); 
             return "subject";
         }

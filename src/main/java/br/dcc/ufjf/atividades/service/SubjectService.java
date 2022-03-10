@@ -1,4 +1,4 @@
-package br.dcc.ufjf.atividades.controller_service;
+package br.dcc.ufjf.atividades.service;
 
 import java.util.List;
 
@@ -19,7 +19,7 @@ public class SubjectService {
  
     // lista todos os Subjects
     //@GetMapping
-    public List<Subject> getSubjects(){
+    public List<Subject> findAllSubjects(){
         return repositorySubject.findAll();
     }
 

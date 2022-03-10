@@ -9,12 +9,12 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import br.dcc.ufjf.atividades.controller_service.RegistrationService;
-import br.dcc.ufjf.atividades.controller_service.StudentService;
-import br.dcc.ufjf.atividades.controller_service.SubjectService;
 import br.dcc.ufjf.atividades.model.Registration;
 import br.dcc.ufjf.atividades.model.Student;
 import br.dcc.ufjf.atividades.model.Subject;
+import br.dcc.ufjf.atividades.service.RegistrationService;
+import br.dcc.ufjf.atividades.service.StudentService;
+import br.dcc.ufjf.atividades.service.SubjectService;
 
 @Controller
 public class RegistrationController {
@@ -40,13 +40,13 @@ public class RegistrationController {
         Registration registration = new Registration();
         model.addAttribute("registration", registration); 
 
-        List<Registration> listRegistrations = registrationService.getRegistrations();
+        List<Registration> listRegistrations = registrationService.findAllRegistrations();
         model.addAttribute("listRegistrations", listRegistrations);
 
-        List<Student> listStudents = studentService.getStudents();
+        List<Student> listStudents = studentService.findAllStudents();
         model.addAttribute("listStudents", listStudents);
 
-        List<Subject> listSubjects = subjectService.getSubjects();
+        List<Subject> listSubjects = subjectService.findAllSubjects();
         model.addAttribute("listSubjects", listSubjects);
 
         return "registration";

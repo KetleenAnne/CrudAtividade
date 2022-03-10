@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import br.dcc.ufjf.atividades.controller_service.StudentService;
 import br.dcc.ufjf.atividades.model.Student;
+import br.dcc.ufjf.atividades.service.StudentService;
 
 //@RestController
 //@RequestMapping("/student")
@@ -33,7 +33,7 @@ public class StudentController{
     @RequestMapping("/student")
     public String viewStudentPage(Model model){
 
-        List<Student> listStudents = studentService.getStudents();
+        List<Student> listStudents = studentService.findAllStudents();
         model.addAttribute("listStudents", listStudents); 
         return "student";
 
