@@ -24,7 +24,9 @@ public class Activities {
     @JoinColumn(name = "subject_id", referencedColumnName = "id")
      private Subject subject;
 
-   
+    @OneToOne
+    @JoinColumn(name="document_id", referencedColumnName = "id")
+    private Document document;
 
 
     public Activities() {
@@ -55,6 +57,20 @@ public class Activities {
         this.id = id;
     }
 
+
+    public Document getDocument() {
+        return document;
+    }
+
+
+    public void setDocument(Document document) {
+        this.document = document;
+    }
+
+    @Override
+    public String toString() {
+        return id.toString();
+    }
 
     
 }

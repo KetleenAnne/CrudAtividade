@@ -1,11 +1,17 @@
 package br.dcc.ufjf.atividades.service;
 
+import java.util.Date;
 import java.util.List;
+
+import java.io.IOException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.Query;
+
 import org.springframework.stereotype.Service;
+import org.springframework.util.*;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import br.dcc.ufjf.atividades.model.Document;
 import br.dcc.ufjf.atividades.repository.DocumentRepository;
@@ -23,8 +29,18 @@ public class DocumentService {
     }
 
     
-    public Document saveDocument(@RequestBody Document document){
-       return documentRepository.save(document);
+    public Document saveDocument(@RequestBody  MultipartFile multipartFile) throws IOException{
+        Document document = new Document();
+        String fileName = StringUtils.cleanPath( multipartFile.getOriginalFilename());
+       
+        document.setName(fileName);
+        document.setContent(multipartFile.getBytes());
+        document.setSize(multipartFile.getSize());
+
+        document.setUploadTime(new Date());
+       
+       
+        return documentRepository.save(document);
 
     }
 
@@ -37,6 +53,8 @@ public class DocumentService {
     public void delete(Long id){ 
         documentRepository.deleteById(id);
     }
+    
+   
 }
 
 

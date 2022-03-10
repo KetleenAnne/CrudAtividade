@@ -48,6 +48,10 @@
           <div>
             <h1> Document Manager </h1>
           </div>
+          
+         
+          <a href="newActivities"> Add New Activities</a>
+          <br/><br/>
 
           <div >
             <h3 class="text-success">[[${message}]]</h3>
@@ -59,11 +63,10 @@
               <div class="col">
                 <div>
                   <img th:src="@{/images/doc.png}" width="50">
-                  <img th:src="@{/images/images.png}">
                 </div>
 
                 <div>
-                  <a th:href="@{/download}"> [[${listDocuments.name}]] </a>
+                  <a th:href="@{'/download?' +${doc.id}}"> [[${listDocuments.name}]] </a>
                 </div>
 
                 <div>

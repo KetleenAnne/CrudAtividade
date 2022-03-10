@@ -20,7 +20,9 @@ public class ActivitiesService {
      public List<Activities> findAllActivities(){
          return repositoryActivities.findAll();
      }
-        
+     
+     
+
     // // salva um novo Activities
      public Activities saveActivities(@RequestBody Activities activities){
              return repositoryActivities.save(activities);

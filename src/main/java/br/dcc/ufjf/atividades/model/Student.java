@@ -8,6 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
@@ -33,6 +35,7 @@ public class Student {
     @ManyToMany(mappedBy = "enrolledStudents")
     private  Set<Subject> subjects = new HashSet<Subject>();
 
+    
     public Student(){
         
     }

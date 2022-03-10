@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="utf-8">
+        <title> Activities</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    </head>
+<body>
+        <div th:replace="home ::navbar"></div>
+        <div align="center">
+            <h1>New Activities</h1>
+            <br><br>
+            <div >
+                <h3 class="text-success">[[${message}]]</h3>
+            </div>
+            <form action="#" th:action="@{/uploadActivities}" th:object="${activities}" method="post">
+                <table border="0" cellpading="10">
+                    <tr>
+                        <td>Subject:</td>
+                        <td>
+                            <select th:field="*{subject}">
+                                <option value="">Select Subject</option>
+                                <option th:each="subject : ${listSubjects}" th:value="${subject.id}" th:text="${subject.name}"></option>
+                            </select>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td>Student:</td>
+                        <td>
+                            <select th:field="*{student}">
+                                <option value="">Select Student</option>
+                                <option th:each="student : ${listStudents}" th:value="${student.id}" th:text="${student.name}"></option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr align="center">
+                        &nbsp;&nbsp;
+                        <td colspan="2"><button type="submit"> To record</td>
+                    </tr>
+                    <tr>
+                        <td>Upload Your File: </td>
+                        <td>
+                            <form method="post" enctype = "multipart/form-data" >
+                                    <label for="formFile" class="form-label"></label>
+                                    <input class="col-form-label" type="file" id="formFile"  name=" document" required/>
+                            </form>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="center">
+                            <input type="submit" value="Upload" class= "btn btn-primary"/>
+                        </td>
+                    </tr>
+        
+                </table> 
+            </form>
+        </div>
+        <br/><br/>
+
+        <div align="center">
+
+            <h3>Activities Management</h3>
+            <br/><br/>
+
+            <table class="table colspan" >
+                <thead >
+                    <tr>
+                        <th>Activities ID</th>
+                        <th>Subject Name</th>
+                        <th>Subject CODE</th>
+                        <th>Student Name</th>
+                        <th>Student CPF</th>
+                        <th>Document</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="a: ${listActivities}" >
+                        <td th:text = "${a.id}">Activities ID</td>
+                        <td th:text = "${a.subject.name}">Subject Name</td>
+                        <td th:text = "${a.subject.id}">Subject CODE</td>
+                        <td th:text = "${a.student.name}">Student Name</td>
+                        <td th:text = "${a.student.cpf}">Student CPF</td>
+                        <td >  
+                            <div> 
+                                <a th:href="@{/download}"> [[${activities.document.name}]] </a>
+                            </div>
+                            <div>
+                                <img th:src="@{/images/doc.png}" width="50">
+                            </div>
+                            <div>
+                                ([[${#numbers.formatUnteger(listDocuments.size, 4, 'COMMA')}]])
+                            </div>
+                        </td>
+                        <td>
+                            <a th:href="@{'/editActivities/'+ ${a.id}}">Edit</a>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <a th:href="@{'/deleteActivities/' + ${a.id}}">Delete</a>
+                        </td>
+                            
+                    </tr>
+                   
+                </tbody>
+            </table>
+
+        </div>
+
+    </body>
+</html>
