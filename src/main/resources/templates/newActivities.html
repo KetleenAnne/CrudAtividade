@@ -13,7 +13,7 @@
             <div >
                 <h3 class="text-success">[[${message}]]</h3>
             </div>
-            <form action="#" th:action="@{/uploadActivities}" th:object="${activities}" method="post">
+            <form action="#" th:action="@{/uploadActivities}" th:object="${activities1}" method="post"  enctype = "multipart/form-data">
                 <table border="0" cellpading="10">
                     <tr>
                         <td>Subject:</td>
@@ -34,17 +34,12 @@
                             </select>
                         </td>
                     </tr>
-                    <tr align="center">
-                        &nbsp;&nbsp;
-                        <td colspan="2"><button type="submit"> To record</td>
-                    </tr>
+                   
                     <tr>
                         <td>Upload Your File: </td>
                         <td>
-                            <form method="post" enctype = "multipart/form-data" >
-                                    <label for="formFile" class="form-label"></label>
-                                    <input class="col-form-label" type="file" id="formFile"  name=" document" required/>
-                            </form>
+                            <label for="formFile" class="form-label"></label>
+                            <input class="col-form-label" type="file" id="formFile"  name="document" required/>
                         </td>
                     </tr>
                     <tr>
@@ -83,15 +78,7 @@
                         <td th:text = "${a.student.name}">Student Name</td>
                         <td th:text = "${a.student.cpf}">Student CPF</td>
                         <td >  
-                            <div> 
-                                <a th:href="@{/download}"> [[${activities.document.name}]] </a>
-                            </div>
-                            <div>
-                                <img th:src="@{/images/doc.png}" width="50">
-                            </div>
-                            <div>
-                                ([[${#numbers.formatUnteger(listDocuments.size, 4, 'COMMA')}]])
-                            </div>
+                           
                         </td>
                         <td>
                             <a th:href="@{'/editActivities/'+ ${a.id}}">Edit</a>

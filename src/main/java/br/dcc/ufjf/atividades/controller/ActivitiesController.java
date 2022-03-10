@@ -82,29 +82,29 @@ public class ActivitiesController {
         model.addAttribute("listActivities", listActivities);
 
         Activities activities = new Activities();
-        model.addAttribute("activities",activities);
+        model.addAttribute("activities1",activities);
 
         return "newActivities";
     }
     @RequestMapping(value = "/uploadActivities", method = RequestMethod.POST)
-    public String saveActivities(@ModelAttribute("activities") Activities activities,  RedirectAttributes ra) throws IOException {
+    public String saveActivities(@ModelAttribute("activities") Activities activities, @RequestParam("document") MultipartFile multipartFile, RedirectAttributes ra) throws IOException {
 
-        // Document document = documentService.saveDocument(multipartFile);
+        Document document = documentService.saveDocument(multipartFile);
         ra.addFlashAttribute("message","The File has been uploaded sucessfully.");
-        // activities.setDocument(document);
+        activities.setDocument(document);
         activitiesService.saveActivities(activities);
 
         return "redirect:/newActivities";
     }
 
 
-    @PostMapping("/upload")
-    public String uploadFile(@RequestParam("document") MultipartFile multipartFile,
-        RedirectAttributes ra) throws IOException{
-        documentService.saveDocument(multipartFile);
-        ra.addFlashAttribute("message","The File has been uploaded sucessfully.");
-        return "redirect:/";
-    }
+    // @PostMapping("/upload")
+    // public String uploadFile(@RequestParam("document") MultipartFile multipartFile,
+    //     RedirectAttributes ra) throws IOException{
+    //     documentService.saveDocument(multipartFile);
+    //     ra.addFlashAttribute("message","The File has been uploaded sucessfully.");
+    //     return "redirect:/";
+    // }
 
     // @GetMapping("/download")
     // // public void downloadFile(@Param("id") Long id, HttpServletResponse response)throws IOException{
