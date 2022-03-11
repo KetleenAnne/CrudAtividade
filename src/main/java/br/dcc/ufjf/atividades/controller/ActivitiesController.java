@@ -87,11 +87,13 @@ public class ActivitiesController {
         return "newActivities";
     }
     @RequestMapping(value = "/uploadActivities", method = RequestMethod.POST)
-    public String saveActivities(@ModelAttribute("activities") Activities activities, @RequestParam("document") MultipartFile multipartFile, RedirectAttributes ra) throws IOException {
+    public String saveActivities(@ModelAttribute("activities1") Activities activities, @RequestParam("doc") MultipartFile multipartFile, RedirectAttributes ra) throws IOException {
 
         Document document = documentService.saveDocument(multipartFile);
         ra.addFlashAttribute("message","The File has been uploaded sucessfully.");
-        activities.setDocument(document);
+        //activities.setDocument(document);
+        activities.setFileContent(multipartFile.getBytes());
+
         activitiesService.saveActivities(activities);
 
         return "redirect:/newActivities";

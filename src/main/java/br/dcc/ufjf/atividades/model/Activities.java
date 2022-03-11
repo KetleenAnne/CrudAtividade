@@ -1,5 +1,6 @@
 package br.dcc.ufjf.atividades.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,20 +19,23 @@ public class Activities {
 
     @OneToOne
     @JoinColumn(name = "student_id", referencedColumnName = "id")
-     private Student student;
+    private Student student;
 
     @OneToOne
     @JoinColumn(name = "subject_id", referencedColumnName = "id")
-     private Subject subject;
+    private Subject subject;
 
-    @OneToOne
-    @JoinColumn(name="document_id", referencedColumnName = "id")
-    private Document document;
+    // @OneToOne
+    // @JoinColumn(name="document_id", referencedColumnName = "id")
+    // private Document document;
 
+    @Column
+    private byte[] fileContent;
 
     public Activities() {
-    }    
-    
+        this.student = new Student();
+        this.subject = new Subject();
+    }
 
     public Student getStudent() {
         return student;
@@ -57,14 +61,20 @@ public class Activities {
         this.id = id;
     }
 
+    // public Document getDocument() {
+    // return document;
+    // }
 
-    public Document getDocument() {
-        return document;
+    // public void setDocument(Document document) {
+    // this.document = document;
+    // }
+
+    public byte[] getFileContent() {
+        return fileContent;
     }
 
-
-    public void setDocument(Document document) {
-        this.document = document;
+    public void setFileContent(byte[] fileContent) {
+        this.fileContent = fileContent;
     }
 
     @Override
@@ -72,5 +82,4 @@ public class Activities {
         return id.toString();
     }
 
-    
 }

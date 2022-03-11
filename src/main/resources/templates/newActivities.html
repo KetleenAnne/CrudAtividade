@@ -13,7 +13,8 @@
             <div >
                 <h3 class="text-success">[[${message}]]</h3>
             </div>
-            <form action="#" th:action="@{/uploadActivities}" th:object="${activities1}" method="post"  enctype = "multipart/form-data">
+            <form action="#" th:action="@{/uploadActivities}" th:object="${activities1}" method="post"  
+            enctype = "multipart/form-data">
                 <table border="0" cellpading="10">
                     <tr>
                         <td>Subject:</td>
@@ -38,13 +39,13 @@
                     <tr>
                         <td>Upload Your File: </td>
                         <td>
-                            <label for="formFile" class="form-label"></label>
-                            <input class="col-form-label" type="file" id="formFile"  name="document" required/>
+                            <!-- <label for="formFile" class="form-label"></label> -->
+                            <input type="file" name="doc" required/>
                         </td>
                     </tr>
                     <tr>
                         <td align="center">
-                            <input type="submit" value="Upload" class= "btn btn-primary"/>
+                            <button type="submit" value="Upload" class= "btn btn-primary"/>
                         </td>
                     </tr>
         
@@ -77,6 +78,7 @@
                         <td th:text = "${a.subject.id}">Subject CODE</td>
                         <td th:text = "${a.student.name}">Student Name</td>
                         <td th:text = "${a.student.cpf}">Student CPF</td>
+                        <td th:text = "${a.fileContent}">Document</td>
                         <td >  
                            
                         </td>
