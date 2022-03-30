@@ -1,7 +1,8 @@
 package br.dcc.ufjf.atividades.controller;
+
 import java.io.IOException;
 import java.util.*;
-import java.lang.Object;
+import java.lang.*;
 
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
@@ -42,19 +43,18 @@ public class ActivitiesController {
 
     @Autowired
     StudentService studentService;
-    
+
     @Autowired
     SubjectService subjectService;
 
     @RequestMapping("/")
-    public String viewHomePage(Model model){
-        
+    public String viewHomePage(Model model) {
+
         List<Student> listStudents = studentService.findAllStudents();
         model.addAttribute("listStudents", listStudents);
 
         List<Subject> listSubjects = subjectService.findAllSubjects();
         model.addAttribute("listSubjects", listSubjects);
-
 
         List<Document> listDocuments = documentService.findAllDocuments();
         model.addAttribute("listDocuments", listDocuments);
@@ -63,19 +63,18 @@ public class ActivitiesController {
         model.addAttribute("listActivities", listActivities);
 
         Activities activities = new Activities();
-        model.addAttribute("activities",activities);
+        model.addAttribute("activities", activities);
         return "home";
     }
 
     @RequestMapping("/newActivities")
-    public String showNewActvitiesForm(Model model){
-        
+    public String showNewActvitiesForm(Model model) {
+
         List<Student> listStudents = studentService.findAllStudents();
         model.addAttribute("listStudents", listStudents);
 
         List<Subject> listSubjects = subjectService.findAllSubjects();
         model.addAttribute("listSubjects", listSubjects);
-
 
         List<Document> listDocuments = documentService.findAllDocuments();
         model.addAttribute("listDocuments", listDocuments);
@@ -84,15 +83,17 @@ public class ActivitiesController {
         model.addAttribute("listActivities", listActivities);
 
         Activities activities = new Activities();
-        model.addAttribute("activities1",activities);
+        model.addAttribute("activities1", activities);
 
         return "newActivities";
     }
+
     @RequestMapping(value = "/uploadActivities", method = RequestMethod.POST)
-    public String saveActivities(@ModelAttribute("activities1") Activities activities, @RequestParam("doc") MultipartFile multipartFile, RedirectAttributes ra) throws IOException {
+    public String saveActivities(@ModelAttribute("activities1") Activities activities,
+            @RequestParam("doc") MultipartFile multipartFile, RedirectAttributes ra) throws IOException {
 
         Document document = documentService.saveDocument(multipartFile);
-        ra.addFlashAttribute("message","The File has been uploaded sucessfully.");
+        ra.addFlashAttribute("message", "The File has been uploaded sucessfully.");
         activities.setDocument(document);
         activities.setFileContent(multipartFile.getBytes());
 
@@ -102,62 +103,56 @@ public class ActivitiesController {
     }
 
     @RequestMapping("/editActivities/{id}")
-    public ModelAndView showEditActivitiesForm(@PathVariable(name="id") Long id){
+    public ModelAndView showEditActivitiesForm(@PathVariable(name = "id") Long id) {
 
-            ModelAndView modelAndView = new ModelAndView("editActivities");
+        ModelAndView modelAndView = new ModelAndView("editActivities");
 
-            Activities activities = activitiesService.get(id);
-               
-            List<Student> listStudents = studentService.findAllStudents();
-            modelAndView.addObject("listStudents", listStudents);
+        Activities activities = activitiesService.get(id);
 
-            List<Subject> listSubjects = subjectService.findAllSubjects();
-            modelAndView.addObject("listSubjects", listSubjects);
+        List<Student> listStudents = studentService.findAllStudents();
+        modelAndView.addObject("listStudents", listStudents);
 
-            modelAndView.addObject("activities1", activities);
-            return modelAndView;
+        List<Subject> listSubjects = subjectService.findAllSubjects();
+        modelAndView.addObject("listSubjects", listSubjects);
+
+        modelAndView.addObject("activities1", activities);
+        return modelAndView;
     }
+
     @RequestMapping("/deleteActivities/{id}")
-    public String showDeleteActivitiesForm(@PathVariable(name="id") Long id){
+    public String showDeleteActivitiesForm(@PathVariable(name = "id") Long id) {
         activitiesService.delete(id);
         return "redirect:/newActivities";
     }
 
-
-
     // @PostMapping("/upload")
-    // public String uploadFile(@RequestParam("document") MultipartFile multipartFile,
-    //     RedirectAttributes ra) throws IOException{
-    //     documentService.saveDocument(multipartFile);
-    //     ra.addFlashAttribute("message","The File has been uploaded sucessfully.");
-    //     return "redirect:/";
+    // public String uploadFile(@RequestParam("document") MultipartFile
+    // multipartFile,
+    // RedirectAttributes ra) throws IOException{
+    // documentService.saveDocument(multipartFile);
+    // ra.addFlashAttribute("message","The File has been uploaded sucessfully.");
+    // return "redirect:/";
     // }
-
-    // @GetMapping("/download")
-    // // public void downloadFile(@Param("id") Long id, HttpServletResponse response)throws IOException{
-        // Optional <Document> result = documentRepository.findById(id);
-        // if(!result.isPresent()) {
-            // throw new Exception("Could not find document with ID: " + id);
-        // }
-        // Document document = result.get();
-        // response.setContentType("application/octet-stream");
-        // String headerKey = "Content-Disposition";
-        // String headerValue = "attachment; filename = " + document.getName();
-
-        // response.setHeader(headerKey, headerValue);
-        // ServletOutputStream outputStream = response.getOutputStream();
-        // outputStream.write(document.getContent());
-        // outputStream.Stream.close();;
-    // }
-
-    // @RequestMapping(value="/saveActivities", method = RequestMethod.POST)
-    // public String saveActivities(@ModelAttribute("activities")Activities activities){
-    //     activitiesService.saveActivities(activities);
-    //     return "redirect:/";
-    // }
-   
-    // @RequestMapping(value="/saveActivities", method = RequestMethod.POST)
 
     
+    //tem que deixar como GetMapping pq RequestMapping não funciona
+    @GetMapping("/download")
+    public void downloadFile(@Param("id") Long id, HttpServletResponse response) 
+    throws IOException {
+
+        Document document= activitiesService.get(id).getDocument();
+        
     
+        response.setContentType("application/octet-stream");
+        String headerKey = "Content-Disposition";
+        String headerValue = "attachment; filename = " + document.getName();
+
+        response.setHeader(headerKey, headerValue);
+        ServletOutputStream outputStream = response.getOutputStream();
+      
+        outputStream.write(document.getContent());
+        outputStream.close();
+        
+    }
+
 }

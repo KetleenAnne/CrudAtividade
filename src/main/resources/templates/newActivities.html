@@ -54,7 +54,6 @@
         </div>
         <br/><br/>
 
-        <div align="center">
 
             <h3>Activities Management</h3>
             <br/><br/>
@@ -78,8 +77,8 @@
                         <td th:text = "${a.subject.id}">Subject CODE</td>
                         <td th:text = "${a.student.name}">Student Name</td>
                         <td th:text = "${a.student.cpf}">Student CPF</td>
-                        <td th:text = "${a.fileContent}">Document</td>
-                      
+                        <td>
+                            <a  th:text = "${a.Document.name}" th:href="@{'/download?id=' + ${a.id}}"> Document Name </a>
                         <td>
                             <a th:href="@{'/editActivities/'+ ${a.id}}">Edit</a>
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
