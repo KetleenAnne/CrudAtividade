@@ -44,8 +44,8 @@
                         </td>
                     </tr>
                     <tr>
-                        <td align="center">
-                            <button type="submit" value="Upload" class= "btn btn-primary"/>
+                        <td>
+                            <button type="submit" value="Upload" class= "btn btn-primary"/>Save 
                         </td>
                     </tr>
         
@@ -79,9 +79,7 @@
                         <td th:text = "${a.student.name}">Student Name</td>
                         <td th:text = "${a.student.cpf}">Student CPF</td>
                         <td th:text = "${a.fileContent}">Document</td>
-                        <td >  
-                           
-                        </td>
+                      
                         <td>
                             <a th:href="@{'/editActivities/'+ ${a.id}}">Edit</a>
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

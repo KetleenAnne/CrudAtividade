@@ -18,16 +18,16 @@ public class Activities {
     private Long id;
 
     @OneToOne
-    @JoinColumn(name = "student_id", referencedColumnName = "id")
+    @JoinColumn(name = "student_id", referencedColumnName = "id",nullable = true)
     private Student student;
 
     @OneToOne
-    @JoinColumn(name = "subject_id", referencedColumnName = "id")
+    @JoinColumn(name = "subject_id", referencedColumnName = "id", nullable = true)
     private Subject subject;
 
-    // @OneToOne
-    // @JoinColumn(name="document_id", referencedColumnName = "id")
-    // private Document document;
+     @OneToOne
+     @JoinColumn(name="document_id", referencedColumnName = "id",nullable = true )
+     private Document document;
 
     @Column
     private byte[] fileContent;
@@ -61,13 +61,13 @@ public class Activities {
         this.id = id;
     }
 
-    // public Document getDocument() {
-    // return document;
-    // }
+    public Document getDocument() {
+     return document;
+    }
 
-    // public void setDocument(Document document) {
-    // this.document = document;
-    // }
+    public void setDocument(Document document) {
+        this.document = document;
+      }
 
     public byte[] getFileContent() {
         return fileContent;

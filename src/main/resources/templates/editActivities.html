@@ -1,0 +1,56 @@
+v<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8" >
+        <title> Edit Activities</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    </head>
+
+    <body>
+         <div th:replace="home ::navbar"></div>
+            <div align="center">
+                <h3>Edit Activities</h3>
+                <br/>
+                <form action="#" th:action="@{/uploadActivities}" th:object="${activities1}" method="post" enctype = "multipart/form-data">
+                    <table class="table table-bordered">
+                        <tr>
+                            <td>Activities ID: </td>
+                            <td><input type="text" th:field="*{id}" readonly="readonly"/></td>
+                        </tr>
+                        <tr>
+                            <td>Subject:</td>
+                            <td> 
+                                <select th:field="*{subject}">
+                                    <option value="">Select Subject</option>
+                                    <option th:each="subject : ${listSubjects}" th:value="${subject.id}" th:text="${subject.name}"></option>
+                                </select> 
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Student:</td>
+                            <td>
+                                <select th:field="*{student}">
+                                    <option value="">Select Student</option>
+                                    <option th:each="student : ${listStudents}" th:value="${student.id}" th:text="${student.name}"></option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Upload Your File: </td>
+                            <td>
+                                <!-- <label for="formFile" class="form-label"></label> -->
+                                <input type="file" name="doc" required/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="center"> 
+                                <button type="submit" value="Upload" class= "btn btn-primary"/> 
+                                Save</td>
+                        </tr>
+                        
+                    </table>
+                </form>
+            </div>
+    </body>
+
+</html>

@@ -1,10 +1,15 @@
 
 package br.dcc.ufjf.atividades.model;
+import java.util.*;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table
@@ -17,6 +22,11 @@ public class Professor {
     private String name;
     
     private String cpf;
+
+    // @JsonIgnore
+    // @ManyToMany(mappedBy = "enrolledProfessors")
+    //  private  Set<Professor> subjects = new HashSet<Professor>();
+    
 
     public Professor() {
     }
@@ -50,6 +60,14 @@ public class Professor {
     public void setCpf(String cpf) {
         this.cpf = cpf;
     }
+
+    // public Set<Professor> getSubjects() {
+    //     return subjects;
+    // }
+
+    // public void setSubjects(Set<Professor> subjects) {
+    //     this.subjects = subjects;
+    // }
 
     
 

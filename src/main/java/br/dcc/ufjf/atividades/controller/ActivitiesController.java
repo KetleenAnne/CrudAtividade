@@ -13,11 +13,13 @@ import org.springframework.ui.Model;
 import org.springframework.util.*;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.dcc.ufjf.atividades.model.Activities;
@@ -91,13 +93,36 @@ public class ActivitiesController {
 
         Document document = documentService.saveDocument(multipartFile);
         ra.addFlashAttribute("message","The File has been uploaded sucessfully.");
-        //activities.setDocument(document);
+        activities.setDocument(document);
         activities.setFileContent(multipartFile.getBytes());
 
         activitiesService.saveActivities(activities);
 
         return "redirect:/newActivities";
     }
+
+    @RequestMapping("/editActivities/{id}")
+    public ModelAndView showEditActivitiesForm(@PathVariable(name="id") Long id){
+
+            ModelAndView modelAndView = new ModelAndView("editActivities");
+
+            Activities activities = activitiesService.get(id);
+               
+            List<Student> listStudents = studentService.findAllStudents();
+            modelAndView.addObject("listStudents", listStudents);
+
+            List<Subject> listSubjects = subjectService.findAllSubjects();
+            modelAndView.addObject("listSubjects", listSubjects);
+
+            modelAndView.addObject("activities1", activities);
+            return modelAndView;
+    }
+    @RequestMapping("/deleteActivities/{id}")
+    public String showDeleteActivitiesForm(@PathVariable(name="id") Long id){
+        activitiesService.delete(id);
+        return "redirect:/newActivities";
+    }
+
 
 
     // @PostMapping("/upload")

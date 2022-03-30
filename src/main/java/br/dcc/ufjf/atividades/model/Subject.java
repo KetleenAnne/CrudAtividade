@@ -28,6 +28,14 @@ public class Subject {
         inverseJoinColumns = @JoinColumn(name="student_id")
     )
     private Set<Student> enrolledStudents = new HashSet<Student>();
+
+    // @ManyToMany
+    // @JoinTable(
+    //     name ="professor_enrolled",
+    //     joinColumns = @JoinColumn(name="subject_id"),
+    //     inverseJoinColumns = @JoinColumn(name = "professor_id")
+    // // )
+    // private Set<Professor> enrolledProfessors = new HashSet<Professor>();
     
     public Subject( String disciplineCode, String name) {
         this.disciplineCode = disciplineCode;
@@ -36,23 +44,6 @@ public class Subject {
 
     public Subject(){
 
-    }
-
-    // public List<Students> getListStudents() {
-    //     return this.listStudents;
-    // }
-
-    // public void setListStudents(List<Students> listStudents) {
-    //      this.listStudents = listStudents;
-    //  }
-
-
-    public Set<Student> getListStudents() {
-        return enrolledStudents;
-    }
-
-    public void setListStudents(Set<Student> enrolledStudents) {
-        this.enrolledStudents = enrolledStudents;
     }
 
     public Long getId(){
@@ -76,15 +67,29 @@ public class Subject {
         this.name = name;
     }
 
-    //  public String getRegistration(){
-    //      return registration;
-    //  }
-    //  public void setRegistration(String registration){
-    //      this.registration=registration;
-    //  }
 
      public void enrollStudent(Student student) {
          enrolledStudents.add(student);
-     } 
-    
+     }
+
+     
+    public Set<Student> getListStudents() {
+        return enrolledStudents;
+    }
+
+    public void setListStudents(Set<Student> enrolledStudents) {
+        this.enrolledStudents = enrolledStudents;
+    }
+
+//     public Set<Professor> getEnrolledProfessors() {
+//         return enrolledProfessors;
+//     }
+
+//     public void setEnrolledProfessors(Set<Professor> enrolledProfessors) {
+//         this.enrolledProfessors = enrolledProfessors;
+//     } 
+//     public void enrollProfessor(Professor professor){
+//         enrolledProfessors.add(professor);
+//     }
+
 }
